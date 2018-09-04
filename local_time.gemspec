@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
-  s.name        = "local_time"
-  s.version     = "2.0.1"
-  s.author      = ["Javan Makhmali", "Sam Stephenson"]
-  s.email       = "javan@basecamp.com"
+  s.name        = "local-time"
+  s.version     = "1.0.0"
+  s.author      = ["Muhammad Khan"]
+  s.email       = "me@muhammadkhan.dev"
   s.summary     = "Rails engine for cache-friendly, client-side local time"
   s.license     = "MIT"
 

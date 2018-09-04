@@ -1,6 +1,6 @@
 module LocalTimeHelper
   def local_time(time, options = nil)
-    time = utc_time(time)
+    time = zone_time(time)
 
     options, format = extract_options_and_value(options, :format)
     format = find_time_format(format)
@@ -18,7 +18,7 @@ module LocalTimeHelper
   end
 
   def local_relative_time(time, options = nil)
-    time = utc_time(time)
+    time = zone_time(time)
     options, type = extract_options_and_value(options, :type)
 
     options[:data] ||= {}
@@ -33,11 +33,11 @@ module LocalTimeHelper
     local_relative_time time, options
   end
 
-  def utc_time(time_or_date)
+  def zone_time(time_or_date)
     if time_or_date.respond_to?(:in_time_zone)
-      time_or_date.in_time_zone.utc
+      time_or_date.in_time_zone
     else
-      time_or_date.to_time.utc
+      time_or_date.to_time
     end
   end
 
