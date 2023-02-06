@@ -5,6 +5,7 @@ Gem::Specification.new do |s|
   s.email       = "me@muhammadkhan.dev"
   s.summary     = "Rails engine for server-side local time"
   s.license     = "MIT"
+  s.homepage    = "https://github.com/MBM1607/local-time"
 
   s.files = Dir["app/**/*", "lib/local_time.rb", "MIT-LICENSE", "README.md"]
   s.test_files = Dir["test/**/*"]
