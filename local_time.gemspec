@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.version     = "1.0.0"
   s.author      = ["Muhammad Khan"]
   s.email       = "me@muhammadkhan.dev"
-  s.summary     = "Rails engine for cache-friendly, client-side local time"
+  s.summary     = "Rails engine for server-side local time"
   s.license     = "MIT"
 
   s.files = Dir["app/**/*", "lib/local_time.rb", "MIT-LICENSE", "README.md"]

@@ -7,6 +7,7 @@ module LocalTimeHelper
 
     options[:data] ||= {}
     options[:data].merge! local: :time, format: format
+    options[:title] = time.strftime('%B %e, %Y %l:%M%P %Z')
 
     time_tag time, time.strftime(format), options
   end
@@ -23,6 +24,7 @@ module LocalTimeHelper
 
     options[:data] ||= {}
     options[:data].merge! local: type
+    options[:title] = time.strftime('%B %e, %Y %l:%M%P %Z')
 
     time_tag time, time.strftime(LocalTime.default_time_format), options
   end

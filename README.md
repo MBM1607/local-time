@@ -1,21 +1,10 @@
 # Local Time
 
-Local Time makes it easy to display times and dates to users in their local time. Its Rails helpers render `<time>` elements in UTC (making them cache friendly), and its JavaScript component immediately converts those elements from UTC to the browser's local time.
+Local Time makes it easy to display times and dates to users in their local time. Its Rails helpers render `<time>` elements in the given timezone.
 
 ## Installation
 
-1. Add `gem 'local_time'` to your Gemfile.
-2. Include `local-time.js` in your application's JavaScript bundle.
-
-    Using the asset pipeline:
-    ```js
-    //= require local-time
-    ```
-    Using the [local-time npm package](https://www.npmjs.com/package/local-time):
-    ```js
-    import LocalTime from "local-time"
-    LocalTime.start()
-    ```
+1. Add `gem 'local-time'` to your Gemfile.
 
 ## Example
 
@@ -33,20 +22,20 @@ Renders:
 ```html
 <time data-format="%B %e, %Y %l:%M%P"
       data-local="time"
-      datetime="2013-11-27T23:43:22Z">November 27, 2013 11:43pm</time>
+      datetime="2013-11-27T23:43:22Z"
+      title="November 27, 2013 11:43pm UTC">November 27, 2013 11:43pm</time>
 ```
 
-And is converted client-side to:
+Or in case timezone of PKT is set
 
 ```html
 <time data-format="%B %e, %Y %l:%M%P"
       data-local="time"
-      datetime="2013-11-27T23:43:22Z"
-      title="November 27, 2013 6:43pm EDT"
-      data-localized="true">November 27, 2013 6:43pm</time>
+      datetime="2013-11-28T04:43:22+05:00"
+      title="November 28, 2013 4:43am PKT">November 28, 2013 4:43am</time>
 ```
 
-*(Line breaks added for readability)*
+> *(Line breaks added for readability)*
 
 ## Time and date helpers
 
@@ -80,8 +69,6 @@ To use a strftime format already defined in your app, pass a symbol as the forma
 
 `I18n.t("time.formats.#{format}")`, `I18n.t("date.formats.#{format}")`, `Time::DATE_FORMATS[format]`, and `Date::DATE_FORMATS[format]` will be scanned (in that order) for your format.
 
-Note: The included strftime JavaScript implementation is not 100% complete. It supports the following directives: `%a %A %b %B %c %d %e %H %I %l %m %M %p %P %S %w %y %Y %Z`
-
 ## Time ago helpers
 
 ```erb
@@ -114,34 +101,3 @@ Preset time and date formats that vary with age. The available types are `date`,
 * `time-or-date` Displays the time if it occurs today or the date if not. "3:26pm" or "Apr 11"
 * `weekday` Displays "Today", "Yesterday", or the weekday (e.g. Wednesday) if the time is within a week of today.
 * `weekday-or-date` Displays the weekday if it occurs within a week or the date if not. "Yesterday" or "Apr 11"
-
-
-## Configuration
-
-**Internationalization (I18n)**
-
-Local Time includes a [set of default `en` translations](lib/assets/javascripts/src/local-time/config/i18n.coffee) which can be updated directly. Or, you can provide an entirely new set in a different locale:
-
-```js
-LocalTime.config.i18n["es"] = {
-  date: {
-    dayNames: [ … ],
-    monthNames: [ … ],
-    …
-  },
-  time: {
-    …
-  },
-  datetime: {
-    …
-  }
-}
-
-LocalTime.config.locale = "es"
-```
-
----
-
-[![Build Status](https://travis-ci.org/basecamp/local_time.svg?branch=master)](https://travis-ci.org/basecamp/local_time)
-
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/basecamp_local_time.svg)](https://saucelabs.com/u/basecamp_local_time)
