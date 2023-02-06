@@ -1,12 +1,12 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
 
-gem 'rake'
-gem 'rails'
-gem 'rails-dom-testing'
-gem 'sprockets'
-gem 'sprockets-export'
-gem 'coffee-script'
-gem 'coffee-script-source'
-gem 'uglifier'
-gem 'blade'
-gem 'blade-sauce_labs_plugin'
+source "https://rubygems.org"
+
+# Specify your gem's dependencies in local-time.gemspec
+gemspec
+
+gem "rake", "~> 13.0"
+
+gem "minitest", "~> 5.0"
+
+gem "rubocop", "~> 1.21"

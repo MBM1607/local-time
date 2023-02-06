@@ -1,13 +1,16 @@
-require "rake/testtask"
+# frozen_string_literal: true
+
 require "bundler/gem_tasks"
-require "open3"
+require "rake/testtask"
 
-task default: :test
-
-task test: ["test:helpers"]
-
-namespace :test do
-  Rake::TestTask.new(:helpers) do |t|
-    t.pattern = "test/helpers/*test.rb"
-  end
+Rake::TestTask.new(:test) do |t|
+  t.libs << "test"
+  t.libs << "lib"
+  t.test_files = FileList["test/**/test_*.rb"]
 end
+
+require "rubocop/rake_task"
+
+RuboCop::RakeTask.new
+
+task default: %i[test rubocop]
